@@ -57,12 +57,12 @@ uint32_t sd_rpc_serial_port_enum(sd_rpc_serial_port_desc_t serial_port_descs[], 
 
     const std::list<SerialPortDesc> &descs = EnumSerialPorts();
 
+    *size = static_cast<uint32_t>(descs.size());
+
     if (descs.size() > *size)
     {
         return NRF_ERROR_DATA_SIZE;
     }
-
-    *size = static_cast<uint32_t>(descs.size());
 
     auto i = 0;
     for (auto &desc : descs)
