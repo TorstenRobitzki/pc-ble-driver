@@ -1215,13 +1215,13 @@ std::string H5Transport::h5PktToString(const bool out, const payload_t &h5Packet
 {
     payload_t payload;
 
-    uint8_t seq_num;
-    uint8_t decodedAckNum;
-    bool decodedReliablePacket;
-    h5_pkt_type_t decodedPacketType;
-    bool data_integrity;
-    uint16_t payload_length;
-    uint8_t header_checksum;
+    uint8_t seq_num = 0;
+    uint8_t decodedAckNum = 0;
+    bool decodedReliablePacket = false;
+    h5_pkt_type_t decodedPacketType = h5_pkt_type_t();
+    bool data_integrity = false;
+    uint16_t payload_length = 0;
+    uint8_t header_checksum = 0;
 
     const auto err_code =
         h5_decode(h5Packet, payload, &seq_num, &decodedAckNum, &data_integrity, &payload_length,
